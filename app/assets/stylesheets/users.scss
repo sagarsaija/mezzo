@@ -1,0 +1,214 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// THIS IS FOR THE user page and survey page
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+/* USER PROFILE PAGE */
+.card {
+  margin-top: 5px;
+  padding: 30px;
+  background-color: rgba(214, 224, 226, 0.2);
+  -webkit-border-top-left-radius:5px;
+  -moz-border-top-left-radius:5px;
+  border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -moz-border-top-right-radius:5px;
+  border-top-right-radius:5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.card.hovercard {
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
+}
+.card.hovercard .card-background {
+  height: 130px;
+}
+.card-background img {
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  filter: blur(25px);
+  margin-left: -100px;
+  margin-top: -200px;
+  min-width: 130%;
+}
+.card.hovercard .useravatar {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+}
+.card.hovercard .useravatar img {
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+}
+.card.hovercard .card-info {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+}
+.card.hovercard .card-info .card-title {
+  padding:0 5px;
+  font-size: 20px;
+  line-height: 1;
+  color: #262626;
+  // where to change the background of the name placard
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.card.hovercard .card-info {
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 20px;
+  color: #737373;
+  text-overflow: ellipsis;
+}
+.card.hovercard .bottom {
+  padding: 0 20px;
+  margin-bottom: 17px;
+}
+.btn-pref .btn {
+  -webkit-border-radius:0 !important;
+}
+
+#message {
+  text-align: right;
+}
+#myMsg{
+  border-bottom: 1px dashed maroon;
+  background-color: #EFEFEF;
+}
+
+#matchMsg {
+  border-bottom: 1px dashed maroon;
+  background-color: ivory;
+}
+.legendary {
+  padding-left: 10px;
+}
+
+.hiddencheck {
+  input[type='checkbox'] {
+    display: none;
+  }
+}
+
+
+input[type=checkbox] + label {
+  background: url(http://guitaralliance.com/wordpress/wp-content/uploads/2015/01/guitar-icon.png) no-repeat;
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.4s;
+  border: solid 5px #FFF;
+  box-shadow: 0 0 1px #FFF;
+  /* Soften the jagged edge */
+  }
+  /* Provide a border when hovered and when the checkbox before it is checked */
+
+  input[type=checkbox] + label:hover,
+  input[type=checkbox]:checked + label {
+    border: solid 5px #F00;
+    box-shadow: 0 0 1px #F00;
+    /* Soften the jagged edge */
+  }
+  /* 
+  - Create a pseudo element :after when checked and provide a tick
+  - Center the content
+  */
+
+  input[type=checkbox]:checked + label:after {
+    content: '\2714';
+    /*content is required, though it can be empty - content: '';*/
+    display: block;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    color: #F00;
+}  
+
+.round {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.img-circular{
+ width: 100px;
+ height: 100px;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ background: black;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
+}
+
+.invert:hover {
+  -webkit-filter: invert(.9);
+  filter: invert(.9);
+}
+
+.img-circular:actived {
+  background: green;
+}
+
+.blur-hue:hover {
+  -webkit-filter: blur(5px) saturate(6);
+  filter: blur(5px) saturate(6);
+}
+
+.f1 {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.f3 {
+  text-align: center;
+}
+
+.osw {
+  font-family: 'Oswald', sans-serif;
+}
+
+textarea {
+  resize: both;
+}
+
+p.navtext {
+  padding-left: 100px;
+}
+
+// remove default bolding from label
+label {
+    font-weight: normal !important;
+}
+
+input[type="radio"]{
+  margin: 0 10px 0 10px;
+}

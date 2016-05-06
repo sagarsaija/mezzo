@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mezzo</title>
+  
+  <!--<script src="/assets/jquery.js" type="text/javascript"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+  <!--<script src="/assets/profile.js"></script>-->
+  <script> // profile.js
+    $(document).ready(function() {
+    $(".btn-pref .btn").click(function () {
+        $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+        // $(".tab").addClass("active"); // instead of this do the below
+        $(this).removeClass("btn-default").addClass("btn-primary");
+    });
+    });
+  </script>
+
+  <!-- <script src="/assets/scripts.js" type="text/javascript"></script> -->
+  <!-- Include jQuery library using a CDN -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+  
+  <!-- Bootstrap & jQuery-->
+  <!-- <script src="http://code.jquery.com/jquery.min.js"></script> -->
+  <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />-->
+  <!-- <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+  
+
+
+  
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%# javascript_include_tag "application" %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+
+  <link rel="icon" type="image/png" href="assets/tab_image.png">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <!--<script src="/assets/bootstrap.js" type="text/javascript"></script>-->
+
+  <!-- <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.14/peer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+
+  <!-- Font Awesome Stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
+
+</head>
+<body>
+  
+  <!-- navbar-inverse  -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        
+        <%= link_to image_tag("mezzo_title_logo.png"), root_path, id: "logo" %>
+
+      </div>
+  
+  
+      <div class="collapse navbar-collapse osw" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li class="osw"> <!-- Find Matches -->
+              <%= link_to find_match_path, id: "icon" do %>
+                <span class="fa fa-search fa-2x" align="center"><div class="osw"><font size="4">Find Matches</font></div></span>
+            <% end %>
+            </li>
+            <li class="osw"> <!-- Messages -->
+              <%= link_to messages_list_path(current_user.id), id: "icon" do %>
+                <span class="fa fa-weixin fa-2x" align="center"><div class="osw"><font size="4">Messages</font></div></span> 
+              <% end %>
+            </li>
+
+              <li class="osw"> <!-- Events -->
+                <%= link_to events_path, id: "icon" do %>
+                    <span class="fa fa-calendar fa-2x" align="center"><div class="osw"><font size="4">Events</font></div></span>
+                <% end %>
+              </li>
+            
+            <li class="osw"> <!-- Matched page -->
+              <%= link_to user_matches_path(current_user.id), id: "icon" do %>
+                <span class="fa fa-users fa-2x" align="center"><div class="osw"><font size="4">Matches</font></div></span>
+              <% end %>
+            </li>
+            
+            <% if filledSurveyPage %>
+              <li class="osw"> <!-- Profile page -->
+                <%= link_to user_path(current_user.id), id: "icon" do %>
+                  <span class="fa fa-user fa-2x" align="center"><div class="osw"><font size="4">Profile</font></div></span> 
+                <% end %>
+              </li>
+              <li class="osw"> <!-- Settings page -->
+                <%= link_to edit2_path, id: "icon" do %>
+                  <span class="fa fa-cog fa-2x" align="center"><div class="osw"><font size="4">Settings</font></div></span>
+                <% end %>
+              </li>
+            <% else %> <!-- Survey page not done, route to survey page -->
+              <li class="osw"> <!-- Profile page -->
+                <%= link_to edit_path, id: "icon" do %>
+                  <span class="fa fa-user fa-2x" align="center"><div class="osw"><font size="4">Profile</font></div></span>
+                <% end %>
+              </li>
+              <li class="osw"> <!-- Settings page -->
+                <%= link_to edit_path, id: "icon" do %>
+                  <span class="fa fa-cog fa-2x" align="center"><div class="osw"><font size="4">Update Profile</font></div></span> 
+                <% end %>
+              </li>
+	          <% end %>
+	          
+            <li class="osw"> <!-- Signout method -->
+              <%= link_to sign_out_path, method: :delete, id: "signout" do %>
+                <span class="fa fa-sign-out fa-2x" align="center"><div class="osw"><font size="4">Sign Out</font></div></span>
+              <% end %>
+            </li>
+          <% else%> <!-- No current user logged in -->
+            <li class="osw"> <!-- FB Login method -->
+              <%= link_to "auth/facebook", id: "signin" do %>
+                <span class="fa fa-facebook-official fa-3x" align="center"><div class="osw"><font size="6">Login</font></div></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- <br><br><br> -->
+  
+  <% flash.each do |key, value| %>
+      <div class="alert alert-info"><%= value %></div>
+  <% end %>
+
+
+
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+  
+
+
+  <!-- <script src="js/bootstrap.js"></script> -->
+
+  <script type="text/javascript">
+    $('basic-multiple').select2();
+  </script>
+  <!--
+  <script>
+      $('.select2').select2({ placeholder : '' });
+
+      $('.select2-remote').select2({ data: [{id:'A', text:'A'}]});
+
+      $('button[data-select2-open]').click(function(){
+        $('#' + $(this).data('select2-open')).select2('open');
+      });
+  </script>
+  -->
+
+  
+  </body>
+</html>

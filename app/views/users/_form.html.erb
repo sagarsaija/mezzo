@@ -1,0 +1,107 @@
+<!-- this is actually the 'edit' page -->
+
+<div id="geolocation" >
+</div>
+
+
+<div class="legendary osw">
+  <legend>BASIC INFORMATION</legend>
+</div>
+
+
+<%= form_tag({controller: "users", action: "updateSurvey"}, method: "post", :class => "form-horizontal") do %>
+    
+    <!-- Select2 -->
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label"> What instruments do you play?</label>
+      <div class="col-md-4">
+        <%= select_tag "instrument", options_for_select(instruments), multiple: true, id: "instrument", class: "form-control", placeholder: "Select one or more instruments" %>
+      </div>
+    </div>
+
+    <!-- Select2 -->
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label"> What instruments are you looking to jam with?</label>
+      <div class="col-md-4">
+        <%= select_tag "looking", options_for_select(instruments), multiple: true, id: "looking", class: "form-control", placeholder: "Select one or more instruments" %>
+      </div>
+    </div>
+
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label"> Genres:</label>
+      <div class="col-md-4">
+        <%= select_tag "genre", options_for_select(genres), multiple: true, id: "genre", class: "form-control", placeholder: "Enter a genre" %>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="checkboxes">Interest level:</label>
+      <div class="col-md-4">
+        <label class="f3">
+          <%= radio_button_tag "interest_level", ' I just want to jam!' %> I just want to jam!
+        </label>
+        <label class="f3">
+          <%= radio_button_tag "interest_level", 'I want to start a band!' %> I want to start a band!
+        </label>
+        <label class="f3">
+          <%= radio_button_tag "interest_level", 'I\'m open to jamming and starting a band!' %> I'm open to both!     
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="textinput">Influence:</label>
+      <div class="col-md-4">
+        <%= text_field_tag :influence, nil, placeholder: "Enter your influences here! (seperated by commas)", maxlength: 200, :size => 50, :required => true %>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="textinput">Personal Media URL:</label>
+      <div class="col-md-4">
+        <%= text_field_tag :url, nil, placeholder: "Add a YouTube/Soundcloud link of you playing!", maxlength: 200, :size => 75, :required => false %>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="textinput">Bio:</label>
+      <div class="col-md-4">
+        <%= text_area_tag :bio, nil, placeholder: "Add a blurb about yourself!", :required =>true, cols: 49.8 %>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="textinput">Radius:</label>
+      <div class="col-md-4">
+        <%= text_field_tag :radius, nil, placeholder: "Between 10 to 100 miles", maxlength: 3, :size => 50, :required =>true%>
+      </div>
+    </div>
+
+    <div class="form-group legendary osw">
+      <label class="col-md-4 control-label" for="textinput"></label>
+      <div class="col-md-4">
+        <%= submit_tag "Continue" %>
+      </div>
+    </div>
+
+<% end %>
+
+</div>
+
+<script type="text/javascript">
+  $('#instrument').select2({
+    //theme: "bootstrap"
+    placeholder: "Select one or more instruments"
+  });
+
+  $('#looking').select2({
+      //theme: "bootstrap"
+      placeholder: "Select one or more instruments"
+  });
+
+  $('#genre').select2({
+      //theme: "bootstrap"
+      placeholder: "Select one or more genres"
+  });
+</script>

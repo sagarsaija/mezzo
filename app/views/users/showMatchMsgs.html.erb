@@ -1,0 +1,47 @@
+
+
+
+<% if current_user %>
+    <div class="page-header">
+      <h2>Messages with <%= @match.name %></h2>
+    </div>
+
+    <%= render 'form2' %>
+<% else %>
+    nope
+<% end %>
+
+<div class="panel panel-default" id="comments">
+  <div class="panel-body">
+
+    <ul class="media-list" id="msgList">
+      <%= render 'chats' %>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+
+  $(document).on('page:before-unload', function() {
+    clearInterval(refreshId);
+  });
+  window.refreshId = setInterval(function() {
+    function call() {
+      req = $.ajax({
+        url: "/users/<%= @match.id %>/messages",
+        success: function (result) {
+          //response = $($.parseHTML(result)).filter("#msgList");
+          response = $(result).find('#msgList').html();
+          $('#msgList').html(response);
+          console.log(response);
+        }
+      });
+    }
+    call();
+  }, 2000);
+
+</script>
+
+
+

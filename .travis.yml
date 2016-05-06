@@ -1,0 +1,21 @@
+sudo: false
+language: ruby
+cache: bundler
+bundler_args: --retry=3 --jobs=3
+rvm:
+    - 2.0
+    - 2.1
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.3.0
+matrix:
+    fast_finish: true
+    
+before_script:
+  - psql -c 'create database mezzo_test;' -U postgres
+  - psql -c 'create database mezzo_development;' -U postgres
+  - psql -c 'create database mezzo_production;' -U postgres
+  
+notifications:
+  slack: teamgigs:Nnem2T8oYDBaz6Sww5bDkhgH

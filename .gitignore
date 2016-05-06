@@ -1,0 +1,4 @@
+log/
+tmp/**/*
+.idea
+config/initializers/omniauth.rb
